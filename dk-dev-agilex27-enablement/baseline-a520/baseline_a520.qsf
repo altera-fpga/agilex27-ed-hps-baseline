@@ -1,0 +1,52 @@
+set_global_assignment -name IP_SEARCH_PATHS "custom_ip/**/*"
+
+set_global_assignment -name FAMILY "Agilex 27"
+set_global_assignment -name TOP_LEVEL_ENTITY baseline_a520
+set_global_assignment -name LAST_QUARTUS_VERSION "26.3.0 Pro Edition"
+
+set_global_assignment -name DEVICE A27_WHITEBOARD_PART
+
+set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
+
+# Variant RTL source files
+set_global_assignment -name SYSTEMVERILOG_FILE baseline_a520.sv
+set_global_assignment -name SYSTEMVERILOG_FILE src/debounce.sv
+
+# Variant IP source files
+set_global_assignment -name IP_FILE ip/shell_subsys/sys_pll.ip
+set_global_assignment -name VDS_FILE src/vds/baseline_top/baseline_top.vds -tag "vds::baseline_top"
+set_global_assignment -name VDS_IP_FILE src/vds/baseline_top/ip/baseline_top_u_sys_clock.ip -tag "vds::baseline_top"
+set_global_assignment -name VDS_IP_FILE src/vds/baseline_top/ip/baseline_top_u_sys_reset.ip -tag "vds::baseline_top"
+set_global_assignment -name VDS_FILE src/vds/fabric_subsys/fabric_subsys.vds -tag "vds::fabric_subsys"
+set_global_assignment -name VDS_IP_FILE src/vds/fabric_subsys/ip/fabric_subsys_u_ace5lite_cache_coherency_translator.ip -tag "vds::fabric_subsys"
+set_global_assignment -name VDS_IP_FILE src/vds/fabric_subsys/ip/fabric_subsys_u_ff_mnoc_init.ip -tag "vds::fabric_subsys"
+set_global_assignment -name VDS_IP_FILE src/vds/fabric_subsys/ip/fabric_subsys_u_hps2fpga_bridge.ip -tag "vds::fabric_subsys"
+set_global_assignment -name VDS_IP_FILE src/vds/fabric_subsys/ip/fabric_subsys_u_interrupt_latency_counter.ip -tag "vds::fabric_subsys"
+set_global_assignment -name VDS_IP_FILE src/vds/fabric_subsys/ip/fabric_subsys_u_interval_timer.ip -tag "vds::fabric_subsys"
+set_global_assignment -name VDS_IP_FILE src/vds/fabric_subsys/ip/fabric_subsys_u_lwfpga2hps_bridge.ip -tag "vds::fabric_subsys"
+set_global_assignment -name VDS_IP_FILE src/vds/fabric_subsys/ip/fabric_subsys_u_lwhps2fpga_bridge.ip -tag "vds::fabric_subsys"
+set_global_assignment -name VDS_IP_FILE src/vds/fabric_subsys/ip/fabric_subsys_u_onchip_memory.ip -tag "vds::fabric_subsys"
+set_global_assignment -name VDS_IP_FILE src/vds/fabric_subsys/ip/fabric_subsys_u_peripherals_mm_bridge.ip -tag "vds::fabric_subsys"
+set_global_assignment -name VDS_IP_FILE src/vds/fabric_subsys/ip/fabric_subsys_u_system_clock.ip -tag "vds::fabric_subsys"
+set_global_assignment -name VDS_IP_FILE src/vds/fabric_subsys/ip/fabric_subsys_u_system_id.ip -tag "vds::fabric_subsys"
+set_global_assignment -name VDS_IP_FILE src/vds/fabric_subsys/ip/fabric_subsys_u_system_reset.ip -tag "vds::fabric_subsys"
+set_global_assignment -name VDS_IP_FILE src/vds/fabric_subsys/ip/fabric_subsys_u_user_leds.ip -tag "vds::fabric_subsys"
+set_global_assignment -name VDS_IP_FILE src/vds/fabric_subsys/ip/fabric_subsys_u_user_push_buttons.ip -tag "vds::fabric_subsys"
+set_global_assignment -name VDS_IP_FILE src/vds/fabric_subsys/ip/fabric_subsys_u_user_switches.ip -tag "vds::fabric_subsys"
+set_global_assignment -name VDS_FILE src/vds/niosv_subsys/niosv_subsys.vds -tag "vds::niosv_subsys"
+set_global_assignment -name VDS_IP_FILE src/vds/niosv_subsys/ip/niosv_subsys_u_f2sdram_address_span_extender.ip -tag "vds::niosv_subsys"
+set_global_assignment -name VDS_IP_FILE src/vds/niosv_subsys/ip/niosv_subsys_u_fpga2hps_address_span_extender.ip -tag "vds::niosv_subsys"
+set_global_assignment -name VDS_IP_FILE src/vds/niosv_subsys/ip/niosv_subsys_u_jtag_avalon_master.ip -tag "vds::niosv_subsys"
+set_global_assignment -name VDS_IP_FILE src/vds/niosv_subsys/ip/niosv_subsys_u_jtag_uart.ip -tag "vds::niosv_subsys"
+set_global_assignment -name VDS_IP_FILE src/vds/niosv_subsys/ip/niosv_subsys_u_lwfpga2hps_address_span_extender.ip -tag "vds::niosv_subsys"
+set_global_assignment -name VDS_IP_FILE src/vds/niosv_subsys/ip/niosv_subsys_u_niosv_clock.ip -tag "vds::niosv_subsys"
+set_global_assignment -name VDS_IP_FILE src/vds/niosv_subsys/ip/niosv_subsys_u_niosv_m.ip -tag "vds::niosv_subsys"
+set_global_assignment -name VDS_IP_FILE src/vds/niosv_subsys/ip/niosv_subsys_u_niosv_onchip_memory.ip -tag "vds::niosv_subsys"
+set_global_assignment -name VDS_IP_FILE src/vds/niosv_subsys/ip/niosv_subsys_u_niosv_pio_in.ip -tag "vds::niosv_subsys"
+set_global_assignment -name VDS_IP_FILE src/vds/niosv_subsys/ip/niosv_subsys_u_niosv_pio_out.ip -tag "vds::niosv_subsys"
+set_global_assignment -name VDS_IP_FILE src/vds/niosv_subsys/ip/niosv_subsys_u_niosv_reset.ip -tag "vds::niosv_subsys"
+set_global_assignment -name VDS_FILE src/vds/shell_subsys/shell_subsys.vds -tag "vds::shell_subsys"
+set_global_assignment -name VDS_IP_FILE src/vds/shell_subsys/ip/shell_subsys_u_agilex27_hps.ip -tag "vds::shell_subsys"
+set_global_assignment -name VDS_IP_FILE src/vds/shell_subsys/ip/shell_subsys_u_clks_and_rsts.ip -tag "vds::shell_subsys"
+set_global_assignment -name VDS_IP_FILE src/vds/shell_subsys/ip/shell_subsys_u_config.ip -tag "vds::shell_subsys"
+set_global_assignment -name VDS_IP_FILE src/vds/shell_subsys/ip/shell_subsys_u_mem_ss.ip -tag "vds::shell_subsys"

@@ -1,0 +1,10 @@
+header:
+  version: 17
+
+local_conf_header:
+  machine: |
+    MACHINE = "agilex27"
+    LINUX_DTS_FILE = "socfpga_agilex27_socdk.dts"
+    CUSTOM_LINUX_DTS_FILE = "baseline_a520.dts"
+    UBOOT_DEFCONFIG = "socfpga_agilex27_emmc_defconfig"
+    UBOOT_DEVICE_TREE = "socfpga_agilex27_socdk_emmc.dtb"

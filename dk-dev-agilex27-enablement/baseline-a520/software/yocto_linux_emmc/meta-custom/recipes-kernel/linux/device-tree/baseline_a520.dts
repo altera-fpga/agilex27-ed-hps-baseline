@@ -1,0 +1,64 @@
+// SPDX-License-Identifier: GPL-2.0-only
+/*
+ * Copyright (C) 2025, Altera Corporation
+ */
+/dts-v1/;
+#include "socfpga_agilex27_socdk.dts"
+
+/ {
+
+    soc@0 {
+        /*
+         * LWHPS2FPGA HPS map (Agilex 27 / EIP-2244):
+         *   CPU address = 0x0800_0000 (hps_rnoc_init RULE1) + fabric offset.
+         */
+
+        /* FPGA LED PIO */
+        led_pio: gpio@8010080 {
+            compatible = "altr,pio-1.0";
+            reg = <0x08010080 0x10>;
+            #gpio-cells = <2>;
+            gpio-controller;
+            resetvalue = <0>;
+        };
+
+        /* FPGA Button PIO */
+        button_pio: gpio@8010060 {
+            compatible = "altr,pio-1.0";
+            reg = <0x08010060 0x10>;
+            interrupt-parent = <&intc>;
+            interrupts = <0 17 1>;
+            altr,interrupt-type = <2>;
+            #gpio-cells = <2>;
+            gpio-controller;
+        };
+
+        /* FPGA DIP switch PIO */
+        dipsw_pio: gpio@8010070 {
+            compatible = "altr,pio-1.0";
+            reg = <0x08010070 0x10>;
+            #gpio-cells = <2>;
+            gpio-controller;
+        };
+    };
+
+    /* LED nodes */
+    soc_leds: leds {
+        compatible = "gpio-leds";
+
+        led_fpga0: fpga0 {
+            label = "fpga_led0";
+            gpios = <&led_pio 0 GPIO_ACTIVE_HIGH>;
+        };
+
+        led_fpga1: fpga1 {
+            label = "fpga_led1";
+            gpios = <&led_pio 1 GPIO_ACTIVE_HIGH>;
+        };
+
+        led_fpga2: fpga2 {
+            label = "fpga_led2";
+            gpios = <&led_pio 2 GPIO_ACTIVE_HIGH>;
+        };
+    };
+};

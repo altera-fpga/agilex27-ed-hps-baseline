@@ -1,0 +1,6 @@
+$hps_apu_fsbl_image_filename = "u-boot-spl-dtb.bin"
+$sd_image_filename = "gsrd-console-image-agilex27.rootfs.wic"
+$sdm_hmod_fw_image_filename = "binaries/sdm_hmod_fw/sdm_hmod_fw.hex"
+$hps_boot_core = 0
+$create_hps_sd_card = TRUE
+run-command-file "targets/agilex27-universal/agilex27-universal.simics"

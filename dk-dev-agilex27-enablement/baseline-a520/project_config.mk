@@ -1,0 +1,21 @@
+# Define the Quartus project name
+PROJECT_NAME := top
+
+#Define the Quartus revision names
+REVISION_NAMES := \
+ 	baseline_a520 \
+
+# Define the base revision
+BASE_REVISION := $(firstword $(REVISION_NAMES))
+
+# Use the WB Quartus flow for this project
+USE_ELAB_ONLY_FLOW := 1
+
+# Don't enforce README validation
+NO_ENFORCE_README_VALIDATION := 1
+
+# Enable functional simulation
+SIM_ENABLED := 1
+
+include $(THIS_MK_DIR)/niosv_build.mk
+$(foreach revision,$(REVISION_NAMES),$(eval output_files/prep-$(revision).done: nios_mem.hex | $(NIOSV_FW_TARGET)-install))
