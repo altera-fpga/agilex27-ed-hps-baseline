@@ -1,0 +1,29 @@
+$hps_apu_fsbl_image_filename = "u-boot-spl-dtb.bin"
+$uboot_itb_image_filename = "u-boot.itb"
+$image_filename = "Image"
+$dtb_filename = "socfpga_agilex27_socdk.dtb"
+$bd_image_filename = "console-image-minimal-agilex27.rootfs.cpio.gz.u-boot"
+$sdm_hmod_fw_image_filename = "binaries/sdm_hmod_fw/sdm_hmod_fw.hex"
+$create_hps_sd_card = FALSE
+$create_hps_sd_card1 = FALSE
+$create_hps_mmc = FALSE
+$create_hps_mmc1 = FALSE
+$create_hps_apu_serial0_console = TRUE
+run-command-file "targets/agilex27-universal/agilex27-universal.simics"
+
+system.board.fpga.hps.apu.phys_mem.load-file $uboot_itb_image_filename 0x82000000
+
+$con = system.board.fpga.hps.lsp.console0.con
+
+script-branch {
+        local $uboot_log = "Hit any key to stop autoboot"
+        bp.console_string.wait-for $con -regexp $uboot_log
+
+        $con.input " "
+
+        system.board.fpga.hps.apu.phys_mem.load-file $image_filename 0x82000000
+        system.board.fpga.hps.apu.phys_mem.load-file $dtb_filename 0x88000000
+        system.board.fpga.hps.apu.phys_mem.load-file $bd_image_filename 0x90000000
+
+        $con.input "booti 0x82000000 0x90000000 0x88000000\n"
+}
